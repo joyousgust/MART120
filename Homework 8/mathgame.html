@@ -1,0 +1,80 @@
+<html>
+    <title>Math Game</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script>
+            // Variables for gameplay.
+            var num1;
+            var num2;
+            var correctAnswer;
+            var totalQuestions = 10;
+            var completeQuestions = 0;
+            var score = 0;
+            var isGameOver = false;
+
+            // checkAnswer(): Happens every time user clicks "Answer" unless game is over.
+            function checkAnswer()
+            {
+                if(isGameOver == false)
+                {
+                    // Define correctAnswer from question.  Increase score if correct.  Increase completeQuestions regardless.
+                    var userAnswer = document.getElementById("answerBox").value;
+                    correctAnswer = num1 + num2;
+                    if(userAnswer == correctAnswer)
+                    {
+                        ++score;
+                    }
+                    ++completeQuestions;
+
+                    // Update score and question count for user.
+                    document.getElementById("gameCount").innerHTML = completeQuestions + " / " + totalQuestions + " questions complete";
+
+                    // If completeQuestions == total then call endGame.  Otherwise, generate new question.
+                    if(completeQuestions == totalQuestions)
+                    {
+                        endGame();
+                    }
+                    else
+                    {
+                        newQuestion();
+                    }
+                }
+            }
+
+            // newQuestion(): Generates question with new numbers.
+            function newQuestion()
+            {
+                num1 = Math.floor(Math.random() * 10);
+                num2 = Math.floor(Math.random() * 10);
+                document.getElementById("question").innerHTML = num1 + " + " + num2 + " = ?";
+            }
+
+            
+            // Set up game.  Print instructions, set score readout and generate first question.
+            function runGame()
+            {
+                document.getElementById("instructions").innerHTML = "Type your answer in the box and click \"Answer.\"  After " + totalQuestions + " turns you'll see how well you did!";
+                document.getElementById("gameCount").innerHTML = completeQuestions + " / " + totalQuestions + " questions complete";
+                newQuestion();
+            }
+
+            // When game is finished, display results.
+            function endGame()
+            {
+                isGameOver = true;
+                document.getElementById("gameResults").innerHTML = "Questions Total: " + totalQuestions + "<br>Questions Correct: " + score + 
+                "<br>Questions Incorrect: " + (totalQuestions - score) + "<br>Score: " + score * 10 + "%";
+            }
+
+        </script>
+    </head>
+    <body onload="runGame();">
+        <h1>Math Game</h1>
+        <div id="instructions"></div>
+        <div id="gameCount"></div>
+        <div id="question"></div>
+        <input type="text" id="answerBox"> 
+        <button type="submit" onclick="checkAnswer();">Answer</button>
+        <div id="gameResults"></div>
+    </body>
+</html>
