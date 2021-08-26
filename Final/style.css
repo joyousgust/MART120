@@ -1,0 +1,43 @@
+body {
+	background-color: #00d7ff;
+	width: 600px;
+	margin-left: 50px;
+	margin-top: 50px;
+	font-family: "Tahoma", "Verdana", sans-serif;
+	font-size: 12pt;
+	color: #121266;
+}
+
+a {
+	font-style: italic;
+}
+
+button {
+	border-radius: 5px;
+}
+
+.listItems {
+	font-family: "Courier New", monospace;
+	font-size: 10pt;
+	color: #777777;
+	line-height: 1.2;
+}
+
+.fancyTitle {
+	font-family: "Georgia", serif;
+	font-size: 24pt;
+	color: #121266;
+	font-style: italic;
+	font-variant: small-caps;
+}
+
+.title {
+	font-family: "Liberation Serif", "Georgia", serif;
+	font-size: 16pt;
+	color: #121266;
+	font-style: italic;
+}
+
+#external {
+	color:red;
+}
